@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Specialization;
+use App\Http\Requests\StoreSpecializationRequest;
+use App\Http\Requests\UpdateSpecializationRequest;
 
-class CourseController extends Controller
+class SpecializationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Course::paginate(10));
+        return response()->json(Specialization::paginate(10));
     }
 
     /**
@@ -27,7 +27,7 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourseRequest $request)
+    public function store(StoreSpecializationRequest $request)
     {
         //
     }
@@ -35,15 +35,15 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show(Specialization $specialization)
     {
-        return response()->json($course);
+        return response()->json($specialization);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit(Specialization $specialization)
     {
         //
     }
@@ -51,7 +51,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(UpdateSpecializationRequest $request, Specialization $specialization)
     {
         //
     }
@@ -59,7 +59,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(Specialization $specialization)
     {
         //
     }

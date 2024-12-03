@@ -13,7 +13,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return response()->json(Teacher::all());
+        return response()->json(Teacher::paginate(10));
     }
 
     /**
