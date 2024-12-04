@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Http\Requests\StoreStudentRequest;
-use App\Http\Requests\UpdateStudentRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Student::paginate(10));
+        return response()->json(User::paginate(10));
     }
 
     /**
@@ -29,31 +27,30 @@ class StudentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'password' => 'required',
         ]);
 
-        $student = Student::create($validatedData);
+        $user = User::create($validatedData);
 
-        return response()->json($student, 201);
+        return response()->json($user, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show(User $user)
     {
-        return response()->json($student);
+        return response()->json($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $student)
+    public function edit(User $user)
     {
         //
     }
@@ -61,7 +58,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -69,7 +66,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(User $user)
     {
         //
     }

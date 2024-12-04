@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('section');
+            $table->string('section');                                                                                                                                                                                                                                                                                                                                      
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
