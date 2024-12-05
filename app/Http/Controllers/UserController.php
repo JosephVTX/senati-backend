@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\StoreRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,9 +12,9 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(User::paginate(10));
+        return response()->json(User::filter($request->all())->paginate(10));
     }
 
     /**
@@ -58,9 +60,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        //
+        $data = $request->validated();
+
+        if (empty($data['password'])) {
+            unset($data['password']);
+        }
+
+        $user->update($data);   
+
+        return response()->json($user);
     }
 
     /**
@@ -68,6 +78,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        return response()->json($user->delete());
     }
 }

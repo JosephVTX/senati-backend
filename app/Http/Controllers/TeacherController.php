@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Teacher::paginate(10));
+        return response()->json(Teacher::filter($request->all())->paginate(10));
     }
 
     /**
@@ -61,6 +62,6 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        return response()->json($teacher->delete());
     }
 }
