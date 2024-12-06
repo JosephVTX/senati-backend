@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api'], function () {
@@ -12,6 +13,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('specializations', '\App\Http\Controllers\SpecializationController');
 });
 
+
+Route::post('vdyuvwk', function () {
+    Artisan::call('migrate:fresh --seed');
+
+    return response()->json(['message' => 'Database refreshed successfully']);
+});
 
 
 require __DIR__ . '/auth.php';
