@@ -32,9 +32,9 @@ class StudentController extends Controller
     public function store(StoreRequest $request)
     {
      
-        $student = Student::create($request->validated());
+        Student::create($request->validated());
 
-        return response()->json($student, 201);
+        return response()->json(['message' => 'Student created successfully'], 201);
     }
 
     /**
