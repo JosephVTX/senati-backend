@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
+use App\Http\Requests\Teacher\StoreRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,11 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTeacherRequest $request)
+    public function store(StoreRequest $request)
     {
-        //
+        Teacher::create($request->validated());
+
+        return response()->json(['message' => 'Teacher created successfully'], 201);
     }
 
     /**

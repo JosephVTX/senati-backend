@@ -12,6 +12,6 @@ class SpecializationSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Specialization::factory(10)->create();
+        \App\Models\Specialization::factory(20)->create();
     }
 }

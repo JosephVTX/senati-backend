@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student;
+namespace App\Http\Requests\Teacher;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required', 'email', 'unique:students,email,' . $this->student->id],
+            'email' => ['required', 'email', 'unique:teachers,email'],
             'phone' => ['required'],
             'address' => ['required'],
         ];
